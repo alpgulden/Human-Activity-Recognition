@@ -231,7 +231,7 @@ print("Score: {}".format(estimator.score(X_test, Y_test)))
 # accuracy 88.7%
 
 from sklearn.ensemble import RandomForestClassifier
-X_train, X_test, y_train, y_test = get_all_data()
+X_train, X_test, y_train, y_test = LoadAllData()
 scaler.fit(X_train)
 X_train = scaler.transform(X_train)
 X_test = scaler.transform(X_test)
@@ -570,22 +570,22 @@ def plot_confusion_matrix(cm, classes,
    plt.xticks(tick_marks, classes, rotation=45)
    plt.yticks(tick_marks, classes)
 
-    if normalize:
+   if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
         print("Normalized confusion matrix")
-    else:
+   else:
         print('Confusion matrix, without normalization')
 
-    print(cm)
+   print(cm)
 
-    thresh = cm.max()/2
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+   thresh = cm.max()/2
+   for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
         plt.text(j, i, cm[i, j],
                   horizontalalignment="center",
                   color="white" if cm[i, j] > thresh else "black")
-    plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
+   plt.tight_layout()
+   plt.ylabel('True label')
+   plt.xlabel('Predicted label')
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score,confusion_matrix
